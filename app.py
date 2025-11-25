@@ -9,7 +9,7 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
 ARTIFACT_DIR = "/app/model_artifacts"  # when deploying, let this path point to folder with joblib + json
-# For local testing on Kaggle, set ARTIFACT_DIR = "/mnt/data/model_artifacts"
+# For local testing on Kaggle, set ARTIFACT_DIR = "/model_artifacts"
 
 CLF_PATH = ARTIFACT_DIR + "/clf.joblib"
 SCALER_PATH = ARTIFACT_DIR + "/scaler.joblib"
@@ -112,7 +112,7 @@ st.title("Jigsaw Rule Classifier — SBERT + LogisticRegression")
 st.write("Masukkan 1 teks (komentar Reddit). Model akan memprediksi `rule` yang relevan.")
 
 # Load
-artifact_dir = st.text_input("Artifact folder path (set to '/mnt/data/model_artifacts' for local Kaggle)", value="/mnt/data/model_artifacts")
+artifact_dir = st.text_input("Artifact folder path (set to '/model_artifacts' for local Kaggle)", value="/model_artifacts")
 clf, scaler, feature_cols, sbert = load_models(artifact_dir)
 
 user_text = st.text_area("Masukkan teks di sini:", height=200)
